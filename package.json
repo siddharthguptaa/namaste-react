@@ -16,5 +16,8 @@
     "siddharth-backend-dev"
   ],
   "author": "\"Siddharth Gupta\"",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.10.3"
+  }
 }
