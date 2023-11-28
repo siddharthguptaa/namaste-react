@@ -1,3 +1,4 @@
+
 # parcel
 - Dev Build
 - Local Server
@@ -16,4 +17,5 @@
 - Its can give you ssl feature also that you can test https on local
 - Tree Shaking Algorithm - remove unused code 
 - Different build for dev and prod bundles
--  
+- 
+
