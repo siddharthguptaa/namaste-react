@@ -1,23 +1,28 @@
 {
-  "name": "namaste-react",
+  "name": "nmst-react",
   "version": "1.0.0",
-  "description": "This is namaste-react learning phase",
-  "main": "app.js",
+  "description": "This is react learning project",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "(https://github.com/siddharthguptaa/namaste-react.git)"
-  },
   "keywords": [
-    "siddharth",
-    "siddharth-namaste-react",
-    "siddharth-backend-dev"
+    "react",
+    "sid",
+    "learning"
   ],
-  "author": "\"Siddharth Gupta\"",
+  "author": "Siddharth Gupta",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.10.3"
-  }
+    "parcel": "^2.10.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist":[
+    "last 2 version"
+  ]
 }
