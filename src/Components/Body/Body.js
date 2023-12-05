@@ -2,17 +2,14 @@ import ResturantCard from "../Common/ResturantCard";
 import { proplist } from "../../Utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "../Shimmer/Shimmer";
-
+import { Link } from "react-router-dom";
 const Body = () => {
   // const [Data, setData] = useState(proplist); //This is array destructing in js
-
   const arr = useState([]);
-
   const Data = arr[0];
   const setData = arr[1];
 
-  const [filterData,setFilterData]=useState("")
-
+  const [filterData, setFilterData] = useState("");
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -20,7 +17,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("https://reqres.in/api/users?delay=3");
+    const data = await fetch("https://reqres.in/api/users?delay=0");
     const json = await data?.json();
     setData(json.data);
     setFilterData(json.data);
@@ -35,7 +32,6 @@ const Body = () => {
     <Shimmer></Shimmer>
   ) : (
     <div className="body">
-      <div className="search">Search</div>
       <div className="filter">
         <div className="search">
           <input
@@ -46,7 +42,11 @@ const Body = () => {
           ></input>
           <button
             onClick={() => {
-              setFilterData(Data.filter((d) => d.first_name.toLowerCase().includes(searchText.toLowerCase())));
+              setFilterData(
+                Data.filter((d) =>
+                  d.first_name.toLowerCase().includes(searchText.toLowerCase())
+                )
+              );
             }}
           >
             Search
@@ -61,7 +61,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filterData.map((resturant, index) => (
-          <ResturantCard key={resturant.id} props={resturant}></ResturantCard>
+          <Link key={resturant.id} to={"resturants/" + resturant.id}>
+            <ResturantCard props={resturant}></ResturantCard>
+          </Link>
         ))}
       </div>
     </div>

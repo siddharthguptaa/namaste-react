@@ -1,46 +1,50 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./Components/Header/Header"
+import Header from "./Components/Header/Header";
 import Body from "./Components/Body/Body";
-
-const HeadingComponent = () => {
-  return (
-    <div id="container">
-        {JSXsxheading()}
-      <JSXsxheading />
-      <JSXsxheading></JSXsxheading>
-      <h1 id="heading">My first functional component.</h1>
-    </div>
-  );
-};
+import About from "./Components/About/About";
+import Contact from "./Components/ContactUs/Contact";
+import Error from "./Components/Error/Error"
+import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
+import ResturantMenu from "./Components/Common/ResturantMenu";
 
 
-
-
-
-
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="res-container">
-        {proplist.map((resturant,index) => 
-          <ResturantCard key={resturant.id} props={resturant}></ResturantCard>
-        )}
-      </div>
-    </div>
-  );
-};
 
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body></Body>
+      <Outlet/>
     </div>
   );
 };
 
+const appRoute = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children:[
+      {
+        path:"/",
+        element:<Body></Body>
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path:"/resturants/:resId",
+        element: <ResturantMenu></ResturantMenu>
+      }
+    ],
+    errorElement: <Error></Error>,
+  },
+  
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRoute} />);
