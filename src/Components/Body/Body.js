@@ -32,28 +32,31 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  if(onlineStatus === false){
+  if (onlineStatus === false) {
     return (
       <div>
-        <h1>Looks Like you're offline!! Please check your internet connection.</h1>
+        <h1>
+          Looks Like you're offline!! Please check your internet connection.
+        </h1>
       </div>
     );
   }
-
 
   return Data.length === 0 ? (
     <Shimmer></Shimmer>
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="m-4 p-4">
           <input
             type="text"
             placeholder="Enter name to search"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           ></input>
           <button
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               setFilterData(
                 Data.filter((d) =>
@@ -64,15 +67,15 @@ const Body = () => {
           >
             Search
           </button>
+          <button
+            className="px-2 py-2 bg-green-100 m-2 rounded-lg"
+            onClick={() => setFilterData(Data.filter((x) => x.id > 4))}
+          >
+            Top Rated Resturants
+          </button>
         </div>
-        <button
-          className="btn-filter"
-          onClick={() => setFilterData(Data.filter((x) => x.id > 4))}
-        >
-          Top Rated Resturants
-        </button>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {filterData.map((resturant, index) => (
           <Link key={resturant.id} to={"resturants/" + resturant.id}>
             <ResturantCard props={resturant}></ResturantCard>
