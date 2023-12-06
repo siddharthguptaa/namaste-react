@@ -1,0 +1,18 @@
+#1 What is NPM?
+    - NPM is universal Package Manager. It is everything but not Node Package Manager. 
+
+#2 What is Parcel/Webpack? Why do we need it? 
+    - It is a bundler which help to bundle our code before running. Along with it, This gives us so much functionalities like HMR (Hot Module Reload), fast build through caching, Minification, code spilliting, Error Handling,Better Error View, Tree shaking and so on.
+
+#3 What is '.parcel-cache'?
+    - This is the reason we are getting fast build because it holds the build files so it will compare on every save old files to new files and he build only difference data files and don't build files which already exists this process saves lot of time at the time of creating build of the project. 
+
+#4 What is npx? 
+    - It will use to execute the existing packages in our project. It stands for Node Package execute and it is just a node package runner and it automatically installs with NPM verison 5.2.0 and above. It also allow us to execute each and every Javascript package present in NPM registry without even installing it. 
+
+#5 What is a difference between dependencies and devDependencies? 
+    - devDependencies is use or installed only for the development purpose it is not used for production environment and it will be downloaded or installed just by add -d as prefix before writing package name ex: npm install -d packagename
+    dependencies is basically used for production environment and it downloaded or installed with out using -d so the syntax will be npm install packagename
+
+#6 What is Tree Shaking? 
+    - 
