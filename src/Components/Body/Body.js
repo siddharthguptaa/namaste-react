@@ -3,6 +3,8 @@ import { proplist } from "../../Utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../Utils/CustomHook/useOnlineStatus";
+
 const Body = () => {
   // const [Data, setData] = useState(proplist); //This is array destructing in js
   const arr = useState([]);
@@ -27,6 +29,17 @@ const Body = () => {
   // if (Data.length === 0) {
   //   return <Shimmer></Shimmer>;
   // }
+
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false){
+    return (
+      <div>
+        <h1>Looks Like you're offline!! Please check your internet connection.</h1>
+      </div>
+    );
+  }
+
 
   return Data.length === 0 ? (
     <Shimmer></Shimmer>

@@ -8,7 +8,7 @@ console.log(err);
         <div>
             <h1>Oops!!</h1>
             <h1>Something Went Wrong!</h1>
-            <h3>{err.status}:{err.statusText}:{err.data}:{err.error.stack}</h3>
+            <h3>{err.status}:{err.statusText}</h3>
         </div>
     );
 }
