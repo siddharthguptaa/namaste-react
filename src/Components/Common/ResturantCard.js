@@ -12,12 +12,23 @@ const ResturantCard = (props) => {
         alt="res-image"
       ></img>
       <h3 className="font-bold py-2 text-lg text-center">
-       {data.first_name} {data.last_name}
+        {data.first_name} {data.last_name}
       </h3>
       <h4>Email : {data.email}</h4>
       <h4>Personal Number: {data.id}</h4>
     </div>
   );
+};
+
+export const withPromotedLabel = (ResturantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-1 p-1 rounded-xl">Promoted</label>
+        <ResturantCard {...props}></ResturantCard>
+      </div>
+    );
+  };
 };
 
 export default ResturantCard;

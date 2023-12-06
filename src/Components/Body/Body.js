@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../Utils/CustomHook/useOnlineStatus";
+import { withPromotedLabel } from "../Common/ResturantCard";
 
 const Body = () => {
   // const [Data, setData] = useState(proplist); //This is array destructing in js
@@ -29,9 +30,9 @@ const Body = () => {
   // if (Data.length === 0) {
   //   return <Shimmer></Shimmer>;
   // }
-
+  const EnhancedResturantCard = withPromotedLabel(ResturantCard);
   const onlineStatus = useOnlineStatus();
-
+  const flag = true;
   if (onlineStatus === false) {
     return (
       <div>
@@ -78,7 +79,8 @@ const Body = () => {
       <div className="res-container flex flex-wrap">
         {filterData.map((resturant, index) => (
           <Link key={resturant.id} to={"resturants/" + resturant.id}>
-            <ResturantCard props={resturant}></ResturantCard>
+            {flag?(<EnhancedResturantCard props={resturant} ></EnhancedResturantCard>):
+            (<ResturantCard props={resturant}></ResturantCard>)}
           </Link>
         ))}
       </div>
