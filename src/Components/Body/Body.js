@@ -1,10 +1,11 @@
 import ResturantCard from "../Common/ResturantCard";
 import { proplist } from "../../Utils/mockData";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../Utils/CustomHook/useOnlineStatus";
 import { withPromotedLabel } from "../Common/ResturantCard";
+import UserContext from "../../Utils/Context/UserContext";
 
 const Body = () => {
   // const [Data, setData] = useState(proplist); //This is array destructing in js
@@ -43,6 +44,8 @@ const Body = () => {
     );
   }
 
+  const { setUserName, loggedInUser } = useContext(UserContext);
+ 
   return Data.length === 0 ? (
     <Shimmer></Shimmer>
   ) : (
@@ -74,13 +77,22 @@ const Body = () => {
           >
             Top Rated Resturants
           </button>
+          <input
+            type="text"
+            className="border border-black"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          ></input>
         </div>
       </div>
       <div className="res-container flex flex-wrap">
         {filterData.map((resturant, index) => (
           <Link key={resturant.id} to={"resturants/" + resturant.id}>
-            {flag?(<EnhancedResturantCard props={resturant} ></EnhancedResturantCard>):
-            (<ResturantCard props={resturant}></ResturantCard>)}
+            {flag ? (
+              <EnhancedResturantCard props={resturant}></EnhancedResturantCard>
+            ) : (
+              <ResturantCard props={resturant}></ResturantCard>
+            )}
           </Link>
         ))}
       </div>
