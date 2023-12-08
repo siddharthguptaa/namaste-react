@@ -3,29 +3,31 @@ import Shimmer from "../Shimmer/Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../../Utils/constant";
 import useResturantMenu from "../../Utils/CustomHook/useResturantMenu";
+import ResturantCategory from "./ResturantCategory";
 
 const ResturantMenu = () => {
+  const [showIndex, setShowIndex] = useState(0);
 
-  const {resId} = useParams();
-  
+  const { resId } = useParams();
+
   const menu = useResturantMenu(resId);
-console.log(menu);
-
 
   if (menu === null) return <Shimmer></Shimmer>;
 
   return (
-    <div>
-      <h1 className="text-center">Resturant Name</h1>
-      <h2>Menu</h2>
-      <ul>
-        {/* {menu.map((item, index) => (
-          <li key={item.id}>
-            {item.first_name} {item.last_name}
-          </li>
-        ))} */}
-        <li>{menu.first_name} {menu.last_name}</li>
-      </ul>
+    <div className="text-center">
+      <h1 className="font-bold my-4 text-2xl">Resturant Name</h1>
+      <p className="font-bold text-lg">
+        {menu[0].first_name} {menu[0].last_name}
+      </p>
+      {menu.map((m, index) => (
+        <ResturantCategory
+          key={index}
+          data={m}
+          showItems={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
+        ></ResturantCategory>
+      ))}
     </div>
   );
 };
