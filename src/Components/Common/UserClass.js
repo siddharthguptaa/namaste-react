@@ -5,24 +5,28 @@ class UserClass extends React.Component {
     super(props);
 
     this.state = {
-    userInfo:{
+      userInfo: {
         name: "Dummy Name",
-        location:"Default"
-    }  
+        location: "Default",
+      },
     };
   }
 
- async componentDidMount() {
+  async componentDidMount() {
     const data = await fetch(GITHUB_USER_API);
     const json = await data.json();
-    console.log(json);
+    //console.log(json);
     this.setState({
-        userInfo: json,
+      userInfo: json,
     });
   }
 
+  async componentDidUpdate() {}
+
+  async componentWillUnmount() {}
+
   render() {
-    const { login,location,avatar_url} = this.state.userInfo;
+    const { login, location, avatar_url } = this.state.userInfo;
 
     return (
       <div className="user-card">
@@ -30,7 +34,6 @@ class UserClass extends React.Component {
         <h2>{login}</h2>
         <h2>Location : {location}</h2>
         <h2>Contact : {avatar_url}</h2>
-        
       </div>
     );
   }

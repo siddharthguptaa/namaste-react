@@ -19,3 +19,10 @@
 - Different build for dev and prod bundles
 - 
 
+#Redux Toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build our redux store 
+- Connect out store to our app
+- Slice (cardSlice)
+- dispatch(action)
+- Selector

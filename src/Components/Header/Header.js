@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../../Utils/CustomHook/useOnlineStatus";
 import Grocery from "../Grocery/Grocery";
 import UserContext from "../../Utils/Context/UserContext";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   // let btnName = "Login";
   const [btnName, setbtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const { loggedInUser } = useContext(UserContext);
-  console.log(loggedInUser);
+  //console.log(loggedInUser);
+
+  // subscribing to the store using a selector
+
+  const cartItems = useSelector((store) => store.cart.items);
+  //console.log(cartItems);
   return (
     <div className="flex justify-between shadow-lg sm:bg-yellow-50 lg:bg-blue-100">
       <div className="logo-container">
@@ -32,6 +38,11 @@ export const Header = () => {
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
+
+          <li className="px-4 font-bold text-xl">
+            <Link to="/cart">Cart🛒 ({cartItems.length} items)</Link>
+          </li>
+
           <li className="px-4">{loggedInUser}</li>
           <button
             className="login-btn"
