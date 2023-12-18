@@ -30,7 +30,7 @@ const ItemList = ({ items }) => {
             Add+
           </button>
         </div>
-        <img src={items.avatar} alt="img"></img>
+        <img src={items.avatar} alt="logo"></img>
       </div>
     </div>
   );

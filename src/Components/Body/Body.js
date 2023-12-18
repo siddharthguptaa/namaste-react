@@ -55,7 +55,7 @@ const Body = () => {
           <input
             type="text"
             placeholder="Enter name to search"
-            className="border border-solid border-black"
+            className="border border-solid border-black px-4 py-2 rounded-xl"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           ></input>
@@ -79,7 +79,7 @@ const Body = () => {
           </button>
           <input
             type="text"
-            className="border border-black"
+            className="border border-solid border-black px-4 py-2 rounded-xl"
             value={loggedInUser}
             onChange={(e) => setUserName(e.target.value)}
           ></input>
